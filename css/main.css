@@ -1,0 +1,103 @@
+header{
+    background-color: #6C6D69;
+    text-align: center;
+    image-rendering: auto;
+}
+
+header nav ul li{
+    list-style-type: none;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+}
+
+main p{
+    font-size: 40px;
+    text-align: justify;
+    font-family: "Roboto", sans-serif;
+}
+
+main p span{
+    font-weight: bold;
+    letter-spacing: 5px;
+    background-color: #BEB5CA;
+    color: whitesmoke;
+}
+
+.main p {
+    font-size: 40px;
+    margin: 0 auto; 
+    width: 50%;
+    margin-top: 1em;
+  }
+
+.items-menu {
+    position: relative;
+  }
+  
+  nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar la legibilidad del texto */
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .items {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  .items div {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin: 10px; /* Espacio entre cada bloque de imagen y párrafo */
+  }
+
+  .items img {
+    width: 300px; 
+  }
+
+  .items p {
+    width: 200px; 
+    margin-top: 10px; /* Espacio entre la imagen y el párrafo */
+  }
+
+footer{
+    text-align: center;
+    font-size: 15px;
+    background-color: #DBDBDB;
+}
+
+.footer img {
+    width: 20%; 
+    margin: 0 10px; /* Espacio entre las imágenes */
+    display: inline-block; /* Permite que las imágenes se muestren una al lado de la otra */
+  }
+
+#h1Tienda{
+    text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+#pQSomos{
+    text-align: center;
+}
