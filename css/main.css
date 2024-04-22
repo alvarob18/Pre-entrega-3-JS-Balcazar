@@ -48,9 +48,28 @@ main div {
   padding-top: 0px;
 }
 
+.divButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.divButton input {
+  background-color: #45594C;
+  color: #FFF;
+}
+
+.divButton input:hover {
+  background-color: #45594C;
+  color: #FFF;
+}
+
 .item-description {
   margin-top: 5px;
   margin-bottom: 0px;
+}
+.divContacto {
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 main p span{
