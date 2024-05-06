@@ -96,11 +96,11 @@ body {
     input {
         background-color: #45594C;
         color: #FFF;
-    }
 
-    input:hover {
-        background-color: #45594C;
-        color: #FFF;
+        &:hover {
+            background-color: #45594C;
+            color: #FFF;
+        }
     }
 }
 
@@ -137,10 +137,8 @@ body {
         
         border: 3px solid transparent; /* Borde transparente por defecto */
         transition: border-color 0.3s ease-in-out; /* Aplica una transición suave al color del borde */
-    }
     
-    .items-section:hover {
-        img {
+        &:hover {
             border-color: black;
         }
     }
@@ -170,13 +168,11 @@ body {
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            margin: auto;    
-        }
-    }
+            margin: auto;   
     
-    .items-section-indumentaria:hover {
-        img {
-            border-color: black;
+            &:hover {
+                border-color: black;
+            }
         }
     }
     
@@ -191,10 +187,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 100px;
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-bottom: 50px;
 
     .items-section-indumentaria {
         img {
@@ -204,15 +197,14 @@ body {
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            /* margin: auto;  */   
+            max-width: 230.125px;
+            object-fit: cover; 
+            
+            &:hover {
+                border-color: black;
+            }
         }
-    }
-    
-    .items-section-indumentaria:hover {
-        img {
-            border-color: black;
-        }
-    }
+    }    
     
     img {
         border: 3px solid transparent; /* Borde transparente por defecto */
@@ -264,6 +256,7 @@ body {
         text-align: justify;
     }
 }
+
 footer {
     text-align: center;
     font-size: 15px;
@@ -335,12 +328,10 @@ footer {
         img {
             transition: transform 0.3s ease-in-out; /* Aplica una transición suave */
             position: relative; /* Asegura que la posición absoluta de la superposición se base en la imagen */
-        }
-    }
-
-    .grid-item {
-        img:hover {
-            transform: scale(1.1); /* Escala la imagen al 110% del tamaño original */
+            
+            &:hover {
+                transform: scale(1.1); /* Escala la imagen al 110% del tamaño original */
+            }
         }
     }
 
@@ -573,11 +564,12 @@ footer {
                         display: inline-block;
                         line-height: 1;
                         text-decoration: none;
+
+                        &:hover {
+                            color: #72B4FC;
+                        }
                     }
 
-                    a:hover {
-                        color: #72B4FC;
-                    }
                 }
             }
         }
@@ -755,10 +747,10 @@ footer {
                         display: inline-block;
                         line-height: 1;
                         text-decoration: none;
-                    }
 
-                    a:hover {
-                        color: #72B4FC;
+                        &:hover {
+                            color: #72B4FC;
+                        }
                     }
                 }
             }

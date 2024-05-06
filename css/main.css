@@ -117,7 +117,7 @@ body main p span {
   border: 3px solid transparent; /* Borde transparente por defecto */
   transition: border-color 0.3s ease-in-out; /* Aplica una transición suave al color del borde */
 }
-.photo-grid .items-section:hover img {
+.photo-grid img:hover {
   border-color: black;
 }
 
@@ -146,7 +146,7 @@ body main p span {
   justify-content: center;
   margin: auto;
 }
-.photo-grid-indumentaria .items-section-indumentaria:hover img {
+.photo-grid-indumentaria .items-section-indumentaria img:hover {
   border-color: black;
 }
 .photo-grid-indumentaria img {
@@ -159,10 +159,7 @@ body main p span {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 100px;
-  padding-left: 50px;
-  padding-right: 50px;
+  margin-bottom: 50px;
 }
 .photo-grid-zapatillas .items-section-indumentaria img {
   max-width: 100%; /* Ancho máximo del 100% del contenedor */
@@ -171,9 +168,10 @@ body main p span {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* margin: auto;  */
+  max-width: 230.125px;
+  object-fit: cover;
 }
-.photo-grid-zapatillas .items-section-indumentaria:hover img {
+.photo-grid-zapatillas .items-section-indumentaria img:hover {
   border-color: black;
 }
 .photo-grid-zapatillas img {
