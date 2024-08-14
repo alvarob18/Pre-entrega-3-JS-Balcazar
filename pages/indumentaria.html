@@ -6,6 +6,7 @@
         
         <!-- links de css -->
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/indumentaria.css">
         <link href="../css/boxicons/css/boxicons.min.css" rel="stylesheet">
     
         <!-- links de fuentes -->
@@ -54,6 +55,19 @@
                                     <li><a class="dropdown-item" href="contacto.html">Contacto</a></li>
                                     <li><a class="dropdown-item" href="quienes-somos.html">Quienes somos</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a id="cart-icon" href="#" class="nav-link">
+                                    <i class="bx bx-cart"></i>
+                                    <span id="carrito-counter">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                            <button id="vaciar-carrito" class="btn btn-danger">
+                            <!-- <a id="vaciar-carrito" href="#" class="nav-link"> -->
+                                <i class="bi bi-trash"></i> Vaciar Carrito
+                            <!-- </a> -->
+                            </button>
                             </li>
                         </ul>
                     </div>
@@ -119,71 +133,115 @@
     <section class="section-container">        
         <div class="photo-grid-indumentaria-h2">
             <h2 id="h2Indumentaria">Ropa con estilo</h2>
+        </div>     
+        <div class="select-remeras">
+            <select id="filter" class="select-remeras2 form-select">
+                <option value="all">Todos</option>
+                <option value="remeraClasica">Remeras Clásicas</option>
+                <option value="remeraUrbana">Remeras Urbanas</option>
+                <option value="remeraCasual">Remeras Casuales</option>
+            </select>
         </div>
-        <div class="photo-grid-indumentaria">  
-                <div class="items-section-indumentaria">
+        <div id="RemerasClasicas" class="photo-grid-indumentaria carrito-container">
+                <div id="divRemerasClasica1" class="items-section-indumentaria">
                     <img src="../img/mohammad-faruque-0ZYPu-nLOwU-unsplash.jpg" alt="Zapatilla">
                     <p class="item-description">Remera estilo clasico</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>        
-                <div class="items-section-indumentaria">
+                <div id="divRemerasClasica2" class="items-section-indumentaria">
                     <img src="../img/mediamodifier-ogmenj2NGho-unsplash.jpg" alt="Zapatilla">
                     <p class="item-description">Remera estilo clasico</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasClasica3" class="items-section-indumentaria">
                     <img src="../img/quarry.jpg" alt="Remera">
                     <p class="item-description">Remera estilo clasico</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasClasica4" class="items-section-indumentaria">
                     <img src="../img/Z4RYz52ljts-unsplash.jpg" alt="Remera">
                     <p class="item-description">Camiseta Arsenal</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div> 
         </div>
-        <div class="photo-grid-indumentaria">  
-                <div class="items-section-indumentaria">
+        <div id="RemerasUrbanas" class="photo-grid-indumentaria carrito-container">
+                <div id="divRemerasUrbana1" class="items-section-indumentaria">
                     <img src="../img/bastian-ignacio-vega-cani-9UAfLTqMoS0-unsplash.jpg" alt="Zapatilla">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Urbanas</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>        
-                <div class="items-section-indumentaria">
+                <div id="divRemerasUrbana2" class="items-section-indumentaria">
                     <img src="../img/mikail-duran-Kv5WiqG_3NA-unsplash.jpg" alt="Zapatilla">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Urbanas</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasUrbana3" class="items-section-indumentaria">
                     <img src="../img/mediamodifier-tT6k5S0fvxs-unsplash.jpg" alt="Remera">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Urbanas</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasUrbana4" class="items-section-indumentaria">
                     <img src="../img/malcolm-lightbody-E4Kuj7GsBjg-unsplash.jpg" alt="Remera">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Urbanas</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div> 
         </div>
-        <div class="photo-grid-indumentaria">  
-                <div class="items-section-indumentaria">
+        <div id="RemerasCasuales" class="photo-grid-indumentaria carrito-container">
+                <div id="divRemerasCasual1" class="items-section-indumentaria">
                     <img src="../img/mediamodifier-tT6k5S0fvxs-unsplash.jpg" alt="Zapatilla">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Casual</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>        
-                <div class="items-section-indumentaria">
+                <div id="divRemerasCasual2" class="items-section-indumentaria">
                     <img src="../img/taylor-dG4Eb_oC5iM-unsplash.jpg" alt="Zapatilla">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Casual</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasCasual3" class="items-section-indumentaria">
                     <img src="../img/mediamodifier-fTDWpCxLA0k-unsplash.jpg" alt="Remera">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Casual</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div>
-                <div class="items-section-indumentaria">
+                <div id="divRemerasCasual4" class="items-section-indumentaria">
                     <img src="../img/jacinto-diego-Groi0xH25-o-unsplash.jpg" alt="Remera">
-                    <p class="item-description">Remera estilo clasico</p>
+                    <p class="item-description">Remera estilo Casual</p>
                     <p class="item-type">Remera</p>
+                    <button class="add-to-cart btn-cart">
+                        <i class="bx bx-cart"></i> Agregar al carrito
+                    </button>
                 </div> 
         </div>
     </section>
@@ -246,5 +304,6 @@
         <h5 class="footer-copyright">Todos los derechos reservados</h5>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/indumentaria.js"></script>
 </body>
 </html>
