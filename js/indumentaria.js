@@ -1,7 +1,8 @@
 class Indumentaria {
     constructor() {
         this.carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        this.filtro = document.getElementById('filter');
+        this.filtro = document.getElementById('filter');        
+        this.cartModal = document.getElementById('cart-modal');
 
         // Inicializar el contador del carrito
         this.actualizarCarrito();
@@ -21,6 +22,7 @@ class Indumentaria {
 
         this.agregarCarrito();
         this.vaciarCarrito();
+        this.finalizarCompra();
     }
 
     mostrarCategoria(filtro) {
@@ -46,9 +48,10 @@ class Indumentaria {
                 break;
         }
     }
-
+    
     actualizarCarrito() {
         const contador = this.carrito.length;
+        //const contador = this.carrito.reduce((acc, item) => acc + item.cantidad, 0);
         document.getElementById('carrito-counter').textContent = contador;
     }
 
@@ -60,13 +63,91 @@ class Indumentaria {
                     id: productoId,
                     nombre: button.parentElement.querySelector('.item-description').textContent,
                     tipo: button.parentElement.querySelector('.item-type').textContent,
-                    img: button.parentElement.querySelector('img').src
+                    img: button.parentElement.querySelector('img').src,
+                    cantidad: 1
                 };
-                this.carrito.push(productoInfo);
+
+                // Verificar si el producto ya existe en el carrito
+                const productoExistente = this.carrito.find(item => item.id === productoInfo.id);
+
+                if (productoExistente) {
+                    // Si existe, incrementar la cantidad
+                    productoExistente.cantidad += 1;
+                    productoInfo.cantidad = productoExistente.cantidad;
+                } else {
+                    // Si no existe, agregarlo como un nuevo producto
+                    this.carrito.push(productoInfo);
+                }
+
+                window.addItemToCart(productoInfo);
+
                 localStorage.setItem('carrito', JSON.stringify(this.carrito));
-                alert('Producto agregado al carrito');
+                //alert('Producto agregado al carrito');
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "bottom-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    //html: '<img src="https://img.icons8.com/doodle/48/000000/shopping-cart--v1.png" alt="Carrito">',
+                    title: "Producto agregado al carrito"
+                  });
+
                 this.actualizarCarrito();
             });
+        });
+    }
+
+    // Finaliza Compra
+    finalizarCompra() {        
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            //this.cartModal.classList.remove('open');
+
+            // Vaciar el carrito     
+            this.carrito.length = 0;
+
+            // Actualizar el localStorage
+            localStorage.setItem('carrito', JSON.stringify(this.carrito));
+    
+            // Vacia el contenido del modal del carrito
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';    
+        
+            this.actualizarCarrito();
+    
+            setTimeout(() => {
+                this.cartModal.style.display = 'none';
+                let timerInterval;
+                Swal.fire({
+                    title: "Ha finalizado su compra con exito!",
+                    //html: "Se cerrara en <b></b> milisegundos.",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                        const timer = Swal.getPopup().querySelector("b");
+                        timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                        }, 100);
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                    }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log("Se cerro por el temporizador.");
+                    }
+                });
+            }, 500);
         });
     }
 

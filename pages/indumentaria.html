@@ -7,6 +7,7 @@
         <!-- links de css -->
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/indumentaria.css">
+        <link rel="stylesheet" href="../css/modalCarrito.css">
         <link href="../css/boxicons/css/boxicons.min.css" rel="stylesheet">
     
         <!-- links de fuentes -->
@@ -21,6 +22,9 @@
         
         <!-- Boxicons CDN -->
         <link href="https://cdn.jsdelivr.net/boxicons/2.0.9/css/boxicons.min.css" rel="stylesheet">
+
+        <!-- FontsAwesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
         <title>Indumentaria Deportiva - Need For Sports</title>
         <meta name="description" content="Compra indumentaria deportiva de alta calidad en Need For Sports. Encuentra ropa para correr, entrenar y más en nuestra tienda deportiva.">
@@ -129,6 +133,19 @@
             </p>
         </div>
     </main>
+
+    <section>
+        <div id="cart-modal" class="cart-modal">
+            <div class="cart-modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Carrito de Compras</h2>
+                <div id="cart-items">
+                    <!-- Los productos agregados al carrito se mostrarán aquí -->
+                </div>
+                <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
+            </div>
+        </div>        
+    </section>
 
     <section class="section-container">        
         <div class="photo-grid-indumentaria-h2">
@@ -303,7 +320,9 @@
     
         <h5 class="footer-copyright">Todos los derechos reservados</h5>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="../js/modalCarrito.js"></script>
     <script src="../js/indumentaria.js"></script>
 </body>
 </html>
