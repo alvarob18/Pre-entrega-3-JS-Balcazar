@@ -1,26 +1,4 @@
-// const CargarApiWeather = () => {
-        
-//     console.log("entro en apiWeather");
-
-//     fetch('http://api.openweathermap.org/geo/1.0/direct?q=BuenosAires&appid=a04ef7859918f3c2d4f69fd740908abd')
-//     .then(response => response.json())
-//     .then(latLong => fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latLong.lat}&lon=${latLong.lon}&appid=a04ef7859918f3c2d4f69fd740908abd`))
-//     .then(response => response.json())
-//     .then(weather => new Promise((resolve, reject) => {
-//         console.log(weather);
-//         // itemsCarrito.forEach(item => {
-//         //     window.addItemToCart(item, cartItemsContainer);
-//         // });
-//         setTimeout(() => {
-//             resolve(weather);
-//         }, 3000);
-//     }))
-//     .catch(error => alert(error.message));
-// };
-
 const CargarApiWeather = () => {
-    console.log("entro en apiWeather");
-
     fetch('http://api.openweathermap.org/geo/1.0/direct?q=BuenosAires&appid=a04ef7859918f3c2d4f69fd740908abd')
         .then(response => response.json())
         .then(latLongArray => {
