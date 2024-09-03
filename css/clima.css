@@ -1,0 +1,48 @@
+.weather-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; 
+}
+
+.weather-button .btn {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;    
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+.weather-modal .modal-dialog {
+    position: fixed;
+    bottom: 90px; 
+    left: 20px;
+    margin: 0;
+    width: 300px; 
+    transition: transform 0.3s ease-out;
+    transform: translateX(-100%); 
+}
+
+.weather-modal.show .modal-dialog {
+    transform: translateX(0); 
+}
+
+.weather-modal .modal-backdrop {
+    display: none;
+}
+
+.weather-modal .modal-content {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-text span {
+    background-color: transparent; 
+    color: inherit; 
+    padding: 0;
+    border: none;
+    box-shadow: none; 
+}

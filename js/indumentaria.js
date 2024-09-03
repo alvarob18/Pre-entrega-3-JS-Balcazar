@@ -27,7 +27,6 @@ class Indumentaria {
         this.agregarCarrito();
         this.vaciarCarrito();
         this.finalizaCompraCarrito();
-        this.finalizarCompra();
     }
 
     mostrarCategoria(filtro) {
@@ -139,7 +138,7 @@ class Indumentaria {
                 this.cartModal.style.display = 'none';
                 let timerInterval;
                 Swal.fire({
-                    title: mensaje ? mensaje : "Ha finalizado su compra con éxito!",
+                    title: mensaje,
                     timer: 2000,
                     timerProgressBar: true,
                     didOpen: () => {

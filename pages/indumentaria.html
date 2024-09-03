@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/indumentaria.css">
         <link rel="stylesheet" href="../css/modalCarrito.css">
+        <link rel="stylesheet" href="../css/clima.css">
         <link href="../css/boxicons/css/boxicons.min.css" rel="stylesheet">
     
         <!-- links de fuentes -->
@@ -25,7 +26,16 @@
 
         <!-- FontsAwesome CDN -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+ 
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
+
+        <!-- Incluyendo jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> 
+
         <title>Indumentaria Deportiva - Need For Sports</title>
         <meta name="description" content="Compra indumentaria deportiva de alta calidad en Need For Sports. Encuentra ropa para correr, entrenar y más en nuestra tienda deportiva.">
     </head>
@@ -129,7 +139,36 @@
             <p>
                 Descubre la moda deportiva que te inspira. Ropa de calidad para tus mejores momentos.           
             </p>
+        </div>    
+
+        <!-- Botón flotante del clima -->
+        <div class="weather-button">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#weatherModal">
+                <i class="fas fa-cloud-sun"></i>
+            </button>
         </div>
+
+        <!-- Modal del clima -->
+        <div class="modal weather-modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="weatherModalLabel">Clima en Buenos Aires</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="card-title" id="localidad"></h5>
+                        <p class="card-text" id="weather-description"></p>
+                        <p class="card-text">Temperatura: <span id="temperatura"></span> °C</p>
+                        <p class="card-text">Sensación Térmica: <span id="sensacionTermica"></span> °C</p>
+                        <p class="card-text">Temperatura Máxima: <span id="temperaturaMax"></span> °C</p>
+                        <p class="card-text">Temperatura Mínima: <span id="temperaturaMin"></span> °C</p>
+                        <p class="card-text">Humedad: <span id="humedad"></span> %</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <section>
@@ -320,6 +359,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="../js/api.js"></script>
     <script src="../js/modalCarrito.js"></script>
     <script src="../js/indumentaria.js"></script>
 </body>
