@@ -1,5 +1,5 @@
 const CargarApiWeather = () => {
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=BuenosAires&appid=a04ef7859918f3c2d4f69fd740908abd')
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=BuenosAires&appid=a04ef7859918f3c2d4f69fd740908abd')
         .then(response => response.json())
         .then(latLongArray => {
             if (latLongArray.length > 0) {
