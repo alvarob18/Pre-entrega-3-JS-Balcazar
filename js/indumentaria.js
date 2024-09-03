@@ -3,7 +3,8 @@ class Indumentaria {
         this.carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         this.filtro = document.getElementById('filter');        
         this.cartModal = document.getElementById('cart-modal');
-
+        const cartItemsContainer = document.getElementById('cart-items');
+        
         // Inicializar el contador del carrito
         this.actualizarCarrito();
 
@@ -12,6 +13,9 @@ class Indumentaria {
 
         // Cargar configuración inicial desde localStorage
         this.cargarConfiguracionInicial();
+
+        // Cargar el carrito desde localStorage
+        this.CargarCarritoLocalStorage(cartItemsContainer);
     }
 
     configurarEventos() {
@@ -22,6 +26,7 @@ class Indumentaria {
 
         this.agregarCarrito();
         this.vaciarCarrito();
+        this.finalizaCompraCarrito();
         this.finalizarCompra();
     }
 
@@ -51,14 +56,14 @@ class Indumentaria {
     
     actualizarCarrito() {
         const contador = this.carrito.length;
-        //const contador = this.carrito.reduce((acc, item) => acc + item.cantidad, 0);
         document.getElementById('carrito-counter').textContent = contador;
     }
 
     agregarCarrito() {
         document.querySelectorAll('.add-to-cart').forEach((button) => {
             button.addEventListener('click', () => {
-                const productoId = button.parentElement.id;
+                const productoId = button.parentElement.id;                
+                const cartItemsContainer = document.getElementById('cart-items');
                 const productoInfo = {
                     id: productoId,
                     nombre: button.parentElement.querySelector('.item-description').textContent,
@@ -71,18 +76,17 @@ class Indumentaria {
                 const productoExistente = this.carrito.find(item => item.id === productoInfo.id);
 
                 if (productoExistente) {
-                    // Si existe, incrementar la cantidad
+                    // Si existe, se incrementa la cantidad
                     productoExistente.cantidad += 1;
                     productoInfo.cantidad = productoExistente.cantidad;
                 } else {
-                    // Si no existe, agregarlo como un nuevo producto
+                    // Si no existe, se agrega como un nuevo producto
                     this.carrito.push(productoInfo);
                 }
 
-                window.addItemToCart(productoInfo);
+                window.addItemToCart(productoInfo, cartItemsContainer);
 
                 localStorage.setItem('carrito', JSON.stringify(this.carrito));
-                //alert('Producto agregado al carrito');
 
                 const Toast = Swal.mixin({
                     toast: true,
@@ -96,8 +100,7 @@ class Indumentaria {
                     }
                   });
                   Toast.fire({
-                    icon: "success",
-                    //html: '<img src="https://img.icons8.com/doodle/48/000000/shopping-cart--v1.png" alt="Carrito">',
+                    icon: "success",                    
                     title: "Producto agregado al carrito"
                   });
 
@@ -106,63 +109,67 @@ class Indumentaria {
         });
     }
 
-    // Finaliza Compra
-    finalizarCompra() {        
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            //this.cartModal.classList.remove('open');
+    CargarCarritoLocalStorage(cartItemsContainer) {
 
+        // Obtener los items del carrito desde localStorage
+        const cartItems = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+        // Iterar sobre los items y agregarlos al carrito
+        cartItems.forEach(item => {
+            window.addItemToCart(item, cartItemsContainer);
+        });
+    }
+
+    //Se llama al finalizar la compra y al vaciar el carrito
+    finalizarCompra(mensaje) {        
+        const handleFinalizarCompra = () => {
             // Vaciar el carrito     
             this.carrito.length = 0;
 
-            // Actualizar el localStorage
+            // Actualiza el localStorage
             localStorage.setItem('carrito', JSON.stringify(this.carrito));
-    
+
             // Vacia el contenido del modal del carrito
             const cartItemsContainer = document.getElementById('cart-items');
             cartItemsContainer.innerHTML = '';    
         
             this.actualizarCarrito();
-    
+
             setTimeout(() => {
                 this.cartModal.style.display = 'none';
                 let timerInterval;
                 Swal.fire({
-                    title: "Ha finalizado su compra con exito!",
-                    //html: "Se cerrara en <b></b> milisegundos.",
+                    title: mensaje ? mensaje : "Ha finalizado su compra con éxito!",
                     timer: 2000,
                     timerProgressBar: true,
                     didOpen: () => {
                         Swal.showLoading();
-                        const timer = Swal.getPopup().querySelector("b");
-                        timerInterval = setInterval(() => {
-                        timer.textContent = `${Swal.getTimerLeft()}`;
-                        }, 100);
                     },
                     willClose: () => {
                         clearInterval(timerInterval);
                     }
-                    }).then((result) => {
-                    /* Read more about handling dismissals below */
+                }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log("Se cerro por el temporizador.");
+                        console.log("Se cerró por el temporizador.");
                     }
                 });
             }, 500);
+        };
+
+        handleFinalizarCompra();
+    }
+
+    finalizaCompraCarrito() {
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            const mensaje = "Ha finalizado su compra con éxito!";
+            this.finalizarCompra(mensaje);
         });
     }
 
     vaciarCarrito() {
-        document.getElementById('vaciar-carrito').addEventListener('click', () => {
-            
-            // Vaciar el carrito
-            this.carrito.length = 0;
-        
-            // Actualizar el localStorage
-            localStorage.setItem('carrito', JSON.stringify(this.carrito));
-        
-            this.actualizarCarrito();
-        
-            alert('El carrito ha sido vaciado.');
+        document.getElementById('vaciar-carrito').addEventListener('click', () => {            
+            const mensaje = "El carrito ha sido vaciado.";
+            this.finalizarCompra(mensaje);
         });
     }
 
